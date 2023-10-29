@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'rectangle.dart';
-
 void main() { runApp(MyApp()); }
 class MyApp extends StatelessWidget {
   @override
@@ -20,21 +18,54 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List massages = [
-    'massage 1',
-    'massage 2',
-    'massage 3',
-    'massage 4',
-    'massage 5',
+    'Первый',
+    'Второй',
+    'Третий',
+    'Четвертый',
+    'Пятый',
+    'Шестой',
+    'Седьмой',
+    'Восьмой',
+    'Девятый',
+    'Десятый',
+  ];
+
+  final List Rimlin = [
+    'I',
+    'II',
+    'III',
+    'IV',
+    'V',
+    'VI',
+    'VII',
+    'VIII',
+    'IX',
+    'X',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('ListView'),
+      centerTitle: true),
       body: ListView.builder(
           itemCount: massages.length,
-          itemBuilder: (context, index) {
-            return MyRectangle(child: massages[index],);
+          itemBuilder: (BuildContext, int index) {
+            return Container(
+              margin: EdgeInsets.all(8),
+                height: 200,
+                decoration:
+                BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+            color: Colors.green),
+                padding: EdgeInsets.symmetric(vertical: 10),
+              child: Row(children: [
+                Expanded(child: Padding(padding: EdgeInsets.only(left: 160, bottom: 130, top: 15), child: Text('${massages[index]}', style: TextStyle(fontSize: 24,), ),)),
+                Container(child: Padding(padding: EdgeInsets.only(top: 140, right: 20, ), child: Text('${Rimlin[index]}', style: TextStyle(fontSize: 20),),))
+              ]) ,
+            );
           }),
     );
+
   }
 }
